@@ -209,10 +209,24 @@ require('lazy').setup({
       require('onedark').setup {
         -- Set a style preset. 'dark' is default.
         style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
+        transparent = true
       }
       require('onedark').load()
     end,
   },
+
+  {
+    'kylechui/nvim-surround',
+    version = '*', -- Use for stability;
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup({
+        -- Configuration
+      })
+    end
+  },
+
+  'ThePrimeagen/harpoon',
 
   {
     -- Set lualine as statusline
@@ -282,7 +296,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
