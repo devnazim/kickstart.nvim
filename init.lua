@@ -124,7 +124,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim',   opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -250,6 +250,7 @@ require('lazy').setup({
     end
   },
 
+  -- Navigate between files
   'ThePrimeagen/harpoon',
 
   {
@@ -275,8 +276,26 @@ require('lazy').setup({
     opts = {},
   },
 
+  -- Comment JSX
+  'JoosepAlviste/nvim-ts-context-commentstring',
+
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    config = function()
+      require('Comment').setup {
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+      }
+    end
+    -- config = function()
+    --   require('Comment').setup({
+    --     pre_hook = function()
+    --       return vim.bo.commentstring
+    --     end,
+    --   })
+    -- end,
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -322,6 +341,9 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
 }, {})
+
+-- Settings for nvim-ts-context-commentstring
+vim.g.skip_ts_context_commentstring_module = true
 
 -- Theme colorschema
 vim.cmd 'colorscheme gruvbox'
