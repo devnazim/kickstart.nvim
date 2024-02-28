@@ -21,6 +21,9 @@ vim.keymap.set('n', '<leader>su',
   { desc = '[S]earch and line [U]pdate' }
 )
 
+vim.keymap.set('n', '<leader>gd', [[:Git diff --name-only ]], { desc = '[G]it [D]iff against branch list file names' })
+vim.keymap.set('n', '<leader>gD', [[:Gvdiffsplit ]], { desc = '[G]it [D]iff file against branch HEAD' })
+
 -- copy to clipboard
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = '[Y] yank to system clipboard' })
 vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = '[Y] yank line to system clipboard' })
