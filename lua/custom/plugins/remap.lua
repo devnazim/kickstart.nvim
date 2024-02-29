@@ -23,6 +23,10 @@ vim.keymap.set('n', '<leader>su',
 
 vim.keymap.set('n', '<leader>gd', [[:Git diff --name-only ]], { desc = '[G]it [D]iff against branch list file names' })
 vim.keymap.set('n', '<leader>gD', [[:Gvdiffsplit ]], { desc = '[G]it [D]iff file against branch HEAD' })
+vim.keymap.set('n', '<leader>gh', function()
+  vim.cmd(
+    [[Git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)']])
+end, { desc = '[G]it [H]istory graph' })
 
 -- copy to clipboard
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = '[Y] yank to system clipboard' })
