@@ -1,6 +1,6 @@
-require('which-key').register {
-  ['<leader>p'] = { name = '[P]refix', _ = 'which_key_ignore' }
-}
+require('which-key').add({
+  { "<leader>p", group = '[P]refix' }
+})
 
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = '[P] prefix [V] view directory' })
 
@@ -21,6 +21,7 @@ vim.keymap.set('n', '<leader>su',
   { desc = '[S]earch and line [U]pdate' }
 )
 
+-- Git
 vim.keymap.set('n', '<leader>gd', [[:Git diff --name-only ]], { desc = '[G]it [D]iff against branch list file names' })
 vim.keymap.set('n', '<leader>gD', [[:Gvdiffsplit ]], { desc = '[G]it [D]iff file against branch HEAD' })
 vim.keymap.set('n', '<leader>gh', function()
